@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <nav className="sticky top-0 flex items-center justify-between bg-sky-100 bg-opacity-60 px-16 py-4 backdrop-blur-[6px]">
+    <nav className="sticky top-0 z-50 flex items-center justify-between bg-sky-100 bg-opacity-60 px-4 py-4 backdrop-blur-[6px] lg:px-16">
       <h1 className="text-lg font-bold tracking-tighter text-sky-700">
         <a href="/">Supa Smoothies</a>
       </h1>
