@@ -1,10 +1,14 @@
 ---
+import HomeContent from "../components/HomeContent";
+import Navbar from "../components/Navbar";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout>
-  <h1>Home</h1>
-  <hr />
-  <br />
-  <a href="/create/" class="hover:underline">Create</a>
+  <Navbar />
+  <main class="mx-16">
+    <HomeContent client:load />
+  </main>
 </MainLayout>
+
+<script></script>
