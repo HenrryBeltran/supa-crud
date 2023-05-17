@@ -32,7 +32,6 @@ function HomeContent() {
         setSmoothies(data);
         setFetchError(null);
         setFetchState("completed");
-        console.log(data);
       }
     };
 
