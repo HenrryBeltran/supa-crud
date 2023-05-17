@@ -1,10 +1,12 @@
 ---
+import Navbar from "../../components/Navbar";
+import SmoothieForm from "../../components/SmoothieForm";
 import MainLayout from "../../layouts/MainLayout.astro";
 ---
 
 <MainLayout>
-  <h1>Create Page</h1>
-  <hr />
-  <br />
-  <a href="/" class="hover:underline">Return</a>
+  <Navbar />
+  <main class="mx-4">
+    <SmoothieForm />
+  </main>
 </MainLayout>
