@@ -73,7 +73,7 @@ const SmoothieForm = () => {
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setMethod(e.target.value)
         }
-        className="mb-4 resize-none rounded-md px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
+        className="mb-4 resize-none rounded-md px-2.5 py-1.5 text-sm text-sky-900 outline-none lg:text-base"
       />
 
       <label
