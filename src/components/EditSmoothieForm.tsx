@@ -1,28 +1,36 @@
 import React, { ChangeEvent, useState } from "react";
 import supabase from "../supabase/client";
 
-const SmoothieForm = () => {
-  const [title, setTitle] = useState("");
-  const [method, setMethod] = useState("");
-  const [rating, setRating] = useState<number>(0);
+interface Props {
+  id: number;
+  title: string;
+  method: string;
+  rating: number;
+}
+
+const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
+  const [editTitle, setTitle] = useState(title);
+  const [editMethod, setMethod] = useState(method);
+  const [editRating, setRating] = useState<number>(rating);
   const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!title || !method || !rating) {
+    if (!editTitle || !editMethod || !editRating) {
       setFormError("Please fill all the fields correctly");
       return;
     }
 
-    if (rating > 5 || rating < 0) {
+    if (editRating > 5 || editRating < 0) {
       setFormError("Rating only can be between 0 to 5");
       return;
     }
 
     const { data, error } = await supabase
       .from("Smoothies")
-      .insert([{ title, method, rating }])
+      .update({ title: editTitle, method: editMethod, rating: editRating })
+      .eq("id", id)
       .select();
 
     if (error) {
@@ -53,7 +61,7 @@ const SmoothieForm = () => {
         type="text"
         id="title"
         placeholder="Milk Shake"
-        value={title}
+        value={editTitle}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setTitle(e.target.value)
         }
@@ -69,7 +77,7 @@ const SmoothieForm = () => {
       <textarea
         id="method"
         placeholder="Blend the fruits with milk..."
-        value={method}
+        value={editMethod}
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setMethod(e.target.value)
         }
@@ -89,15 +97,26 @@ const SmoothieForm = () => {
         step=".1"
         id="rating"
         placeholder="5"
-        value={rating}
+        value={editRating}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setRating(Number(e.target.value))
         }
         className="mb-4 rounded-md px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
-      <button className="mx-auto mt-4 w-fit rounded bg-sky-500 px-4 py-1.5 font-semibold text-white shadow-md hover:bg-sky-600">
-        Create Smoothie Recipe
-      </button>
+      <div className="flex w-full justify-between">
+        <button
+          type="submit"
+          className="mt-4 w-fit rounded bg-sky-500 px-4 py-1.5 font-semibold text-white shadow-md hover:bg-sky-600"
+        >
+          Save Smoothie
+        </button>
+        <a
+          href="/"
+          className="mt-4 w-fit rounded border border-rose-500 bg-white px-4 py-1.5 font-semibold text-rose-500 shadow-md hover:bg-rose-500 hover:text-white"
+        >
+          Cancel
+        </a>
+      </div>
 
       {formError && (
         <p className="mt-4 text-center text-sm text-rose-500 md:text-base">
@@ -107,5 +126,4 @@ const SmoothieForm = () => {
     </form>
   );
 };
-
-export default SmoothieForm;
+export default EditSmoothieForm;

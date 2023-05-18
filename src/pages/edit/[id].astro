@@ -1,0 +1,41 @@
+---
+import EditSmoothieForm from "../../components/EditSmoothieForm";
+import Navbar from "../../components/Navbar";
+import MainLayout from "../../layouts/MainLayout.astro";
+import supabase from "../../supabase/client";
+
+interface Smoothie {
+  id: number;
+  created_at: Date;
+  title: string;
+  method: string;
+  rating: number;
+}
+
+const { id } = Astro.params;
+
+const { data, error } = await supabase
+  .from("Smoothies")
+  .select<"*", Smoothie>()
+  .eq("id", Number(id))
+  .single();
+
+if (error) {
+  return Astro.redirect("/");
+}
+
+const smoothie: Smoothie = data;
+---
+
+<MainLayout>
+  <Navbar />
+  <main class="mx-4">
+    <EditSmoothieForm
+      client:load
+      id={smoothie.id}
+      title={smoothie.title}
+      method={smoothie.method}
+      rating={smoothie.rating}
+    />
+  </main>
+</MainLayout>
