@@ -10,6 +10,7 @@ function Navbar() {
         <li>
           <a
             className="font-medium text-sky-500 hover:text-sky-700 hover:underline hover:underline-offset-2"
+            aria-label="Home link"
             href="/"
           >
             Home
@@ -18,6 +19,7 @@ function Navbar() {
         <li>
           <a
             className="font-medium text-sky-500 hover:text-sky-700 hover:underline hover:underline-offset-2"
+            aria-label="New smoothie link"
             href="/create/"
           >
             New Smoothie

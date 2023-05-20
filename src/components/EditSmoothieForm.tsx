@@ -92,6 +92,8 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
       </label>
       <input
         type="number"
+        spellCheck={false}
+        inputMode="numeric"
         min={0}
         max={5}
         step=".1"
@@ -105,12 +107,14 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
       />
       <div className="flex w-full justify-between">
         <button
+          aria-label="Save Smoothie"
           type="submit"
           className="mt-4 w-fit rounded bg-sky-500 px-4 py-1.5 font-semibold text-white shadow-md hover:bg-sky-600"
         >
           Save Smoothie
         </button>
         <a
+          aria-label="Cancel Edit"
           href="/"
           className="mt-4 w-fit rounded border border-rose-500 bg-white px-4 py-1.5 font-semibold text-rose-500 shadow-md hover:bg-rose-500 hover:text-white"
         >

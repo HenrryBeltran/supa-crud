@@ -96,7 +96,10 @@ const SmoothieForm = () => {
         }
         className="mb-4 rounded-md px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
-      <button className="mx-auto mt-4 w-fit rounded bg-sky-500 px-4 py-1.5 font-semibold text-white shadow-md hover:bg-sky-600">
+      <button
+        aria-label="Create smoothie recipe"
+        className="mx-auto mt-4 w-fit rounded bg-sky-500 px-4 py-1.5 font-semibold text-white shadow-md hover:bg-sky-600"
+      >
         Create Smoothie Recipe
       </button>
 

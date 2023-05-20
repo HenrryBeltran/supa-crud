@@ -51,6 +51,7 @@ const SmoothieCard: React.FC<Smoothie> = ({ smoothie, onDelete }) => {
       <div className="ml-auto mt-auto flex h-min gap-2">
         <a
           href={`/edit/${smoothie.id}`}
+          aria-label="Edit smoothie"
           className="rounded-full p-3 hover:bg-sky-200/50 lg:p-2"
         >
           <svg
@@ -61,6 +62,7 @@ const SmoothieCard: React.FC<Smoothie> = ({ smoothie, onDelete }) => {
           </svg>
         </a>
         <button
+          aria-label="Delete Smoothie"
           onClick={handleDelete}
           className="rounded-full p-3 hover:bg-sky-200/50 lg:p-2"
         >
