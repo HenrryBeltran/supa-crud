@@ -65,7 +65,7 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setTitle(e.target.value)
         }
-        className="mb-4 rounded-md px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
+        className="mb-4 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
 
       <label
@@ -81,7 +81,7 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setMethod(e.target.value)
         }
-        className="mb-4 resize-none rounded-md px-2.5 py-1.5 text-sm text-sky-900 outline-none lg:text-base"
+        className="mb-4 resize-none rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 outline-none lg:text-base"
       />
 
       <label
@@ -103,7 +103,7 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setRating(Number(e.target.value))
         }
-        className="mb-4 rounded-md px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
+        className="mb-4 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
       <div className="flex w-full justify-between">
         <button
@@ -114,7 +114,7 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
           Save Smoothie
         </button>
         <a
-          aria-label="Cancel Edit"
+          aria-label="Cancel Edit bg-slate-50 border border-slate-100"
           href="/"
           className="mt-4 w-fit rounded border border-rose-500 bg-white px-4 py-1.5 font-semibold text-rose-500 shadow-md hover:bg-rose-500 hover:text-white"
         >

@@ -57,7 +57,7 @@ const SmoothieForm = () => {
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setTitle(e.target.value)
         }
-        className="mb-4 rounded-md px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
+        className="mb-4 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
 
       <label
@@ -73,7 +73,7 @@ const SmoothieForm = () => {
         onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
           setMethod(e.target.value)
         }
-        className="mb-4 resize-none rounded-md px-2.5 py-1.5 text-sm text-sky-900 outline-none lg:text-base"
+        className="mb-4 resize-none rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 outline-none lg:text-base"
       />
 
       <label
@@ -94,7 +94,7 @@ const SmoothieForm = () => {
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           setRating(Number(e.target.value))
         }
-        className="mb-4 rounded-md px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
+        className="mb-4 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
       <button
         aria-label="Create smoothie recipe"
