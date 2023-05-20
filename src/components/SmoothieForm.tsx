@@ -84,6 +84,7 @@ const SmoothieForm = () => {
       </label>
       <input
         type="number"
+        inputMode="decimal"
         min={0}
         max={5}
         step=".1"
