@@ -60,10 +60,11 @@ const SmoothiesContent = () => {
         setFetchError("Could not fetch the smoothies");
         setSmoothies(null);
         console.log(error);
+        return;
       }
       if (data) {
-        setSmoothies(data);
         setFetchError(null);
+        setSmoothies(data);
       }
     };
 

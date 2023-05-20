@@ -25,8 +25,10 @@ const SmoothieCard: React.FC<Smoothie> = ({ smoothie, onDelete }) => {
 
     if (error) {
       console.log(error);
+      console.log("hi");
+      return;
     }
-    if (data) {
+    if (data && data.length > 0) {
       onDelete(smoothie.id);
     }
   };
