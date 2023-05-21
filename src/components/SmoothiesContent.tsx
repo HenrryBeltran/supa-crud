@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import React, { Fragment, useEffect, useState } from 'react';
+import { Listbox, Transition } from '@headlessui/react';
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
-import supabase from "../supabase/client";
-import SmoothieCard from "./SmoothieCard";
+import supabase from '../supabase/client';
+import SmoothieCard from './SmoothieCard';
 
 interface Smoothie {
   id: number;
@@ -16,20 +16,20 @@ interface Smoothie {
 const filters = [
   {
     id: 1,
-    name: "time",
-    type: "created_at",
+    name: 'time',
+    type: 'created_at',
     isAscending: false,
   },
   {
     id: 2,
-    name: "name",
-    type: "title",
+    name: 'name',
+    type: 'title',
     isAscending: true,
   },
   {
     id: 3,
-    name: "rating",
-    type: "rating",
+    name: 'rating',
+    type: 'rating',
     isAscending: false,
   },
 ];
@@ -52,12 +52,12 @@ const SmoothiesContent = () => {
   useEffect(() => {
     const fetchSmoothies = async () => {
       const { data, error } = await supabase
-        .from("Smoothies")
-        .select<"*", Smoothie>("*")
+        .from('Smoothies')
+        .select<'*', Smoothie>('*')
         .order(orderBy.type, { ascending: orderBy.isAscending });
 
       if (error) {
-        setFetchError("Could not fetch the smoothies");
+        setFetchError('Could not fetch the smoothies');
         setSmoothies(null);
         console.log(error);
         return;
@@ -80,10 +80,7 @@ const SmoothiesContent = () => {
             <Listbox.Button className="relative cursor-default rounded-lg bg-slate-50 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-300 sm:text-sm">
               <span className="block truncate">{orderBy.name}</span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                <ChevronUpDownIcon
-                  className="h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
+                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </span>
             </Listbox.Button>
             <Transition
@@ -98,7 +95,7 @@ const SmoothiesContent = () => {
                     key={index}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? "bg-sky-100 text-sky-900" : "text-sky-900"
+                        active ? 'bg-sky-100 text-sky-900' : 'text-sky-900'
                       }`
                     }
                     value={order}
@@ -106,9 +103,7 @@ const SmoothiesContent = () => {
                     {({ selected }) => (
                       <>
                         <span
-                          className={`block truncate ${
-                            selected ? "font-medium" : "font-normal"
-                          }`}
+                          className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}
                         >
                           {order.name}
                         </span>
@@ -127,19 +122,11 @@ const SmoothiesContent = () => {
         </Listbox>
       </div>
 
-      {fetchError && (
-        <p className="text-center text-xl font-bold text-rose-500">
-          {fetchError}
-        </p>
-      )}
+      {fetchError && <p className="text-center text-xl font-bold text-rose-500">{fetchError}</p>}
       {smoothies && (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5 xl:grid-cols-4">
           {smoothies?.map((smoothie) => (
-            <SmoothieCard
-              key={smoothie.id}
-              smoothie={smoothie}
-              onDelete={handleDelete}
-            />
+            <SmoothieCard key={smoothie.id} smoothie={smoothie} onDelete={handleDelete} />
           ))}
         </div>
       )}

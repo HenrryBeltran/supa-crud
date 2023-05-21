@@ -1,5 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
-import supabase from "../supabase/client";
+import React, { ChangeEvent, useState } from 'react';
+import supabase from '../supabase/client';
 
 interface Props {
   id: number;
@@ -18,30 +18,30 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
     e.preventDefault();
 
     if (!editTitle || !editMethod || !editRating) {
-      setFormError("Please fill all the fields correctly");
+      setFormError('Please fill all the fields correctly');
       return;
     }
 
     if (editRating > 5 || editRating < 0) {
-      setFormError("Rating only can be between 0 to 5");
+      setFormError('Rating only can be between 0 to 5');
       return;
     }
 
     const { data, error } = await supabase
-      .from("Smoothies")
+      .from('Smoothies')
       .update({ title: editTitle, method: editMethod, rating: editRating })
-      .eq("id", id)
+      .eq('id', id)
       .select();
 
     if (error) {
       console.log(error);
-      setFormError("Please fill all the fields correctly");
+      setFormError('Please fill all the fields correctly');
     }
 
     if (data) {
       console.log(data);
       setFormError(null);
-      window.location.href = "/";
+      window.location.href = '/';
     }
   };
 
@@ -62,9 +62,7 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
         id="title"
         placeholder="Milk Shake"
         value={editTitle}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setTitle(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
         className="mb-4 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
 
@@ -78,9 +76,7 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
         id="method"
         placeholder="Blend the fruits with milk..."
         value={editMethod}
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-          setMethod(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setMethod(e.target.value)}
         className="mb-4 resize-none rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 outline-none lg:text-base"
       />
 
@@ -100,9 +96,7 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
         id="rating"
         placeholder="5"
         value={editRating}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setRating(Number(e.target.value))
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setRating(Number(e.target.value))}
         className="mb-4 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
       <div className="flex w-full justify-between">
@@ -123,9 +117,7 @@ const EditSmoothieForm: React.FC<Props> = ({ id, title, method, rating }) => {
       </div>
 
       {formError && (
-        <p className="mt-4 text-center text-sm text-rose-500 md:text-base">
-          {formError}
-        </p>
+        <p className="mt-4 text-center text-sm text-rose-500 md:text-base">{formError}</p>
       )}
     </form>
   );

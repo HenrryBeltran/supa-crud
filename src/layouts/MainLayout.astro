@@ -21,13 +21,16 @@
       crossorigin
     />
     <!-- Icon Links -->
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/favicons/site.webmanifest" />
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#ffffff" />
+    <link rel="shortcut icon" href="/favicons/favicon.ico" />
+    <meta name="apple-mobile-web-app-title" content="Henrry Supa" />
+    <meta name="application-name" content="Henrry Supa" />
     <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
   </head>
   <body class="bg-white">
     <slot />
@@ -36,12 +39,12 @@
 
 <style is:global>
   @font-face {
-    font-family: "Satoshi";
-    src: url("/fonts/satoshi-variable.woff2") format("woff2");
+    font-family: 'Satoshi';
+    src: url('/fonts/satoshi-variable.woff2') format('woff2');
   }
 
   :root {
-    font-family: "Satoshi", -apple-system, sans-serif;
+    font-family: 'Satoshi', -apple-system, sans-serif;
     font-weight: 400;
 
     -webkit-font-smoothing: antialiased;

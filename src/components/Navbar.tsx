@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function Navbar() {
   return (
@@ -9,7 +9,7 @@ function Navbar() {
       <ul className="flex gap-6">
         <li>
           <a
-            className="font-medium text-sky-600 hover:text-sky-800 hover:underline hover:underline-offset-2"
+            className="font-medium text-sky-800 hover:text-sky-500 hover:underline hover:underline-offset-2"
             aria-label="Home link"
             href="/"
           >
@@ -18,7 +18,7 @@ function Navbar() {
         </li>
         <li>
           <a
-            className="font-medium text-sky-600 hover:text-sky-800 hover:underline hover:underline-offset-2"
+            className="font-medium text-sky-800 hover:text-sky-500 hover:underline hover:underline-offset-2"
             aria-label="New smoothie link"
             href="/create/"
           >

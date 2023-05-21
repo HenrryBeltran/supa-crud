@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useState } from "react";
-import supabase from "../supabase/client";
+import React, { ChangeEvent, useState } from 'react';
+import supabase from '../supabase/client';
 
 const SmoothieForm = () => {
-  const [title, setTitle] = useState("");
-  const [method, setMethod] = useState("");
+  const [title, setTitle] = useState('');
+  const [method, setMethod] = useState('');
   const [rating, setRating] = useState<number>(0);
   const [formError, setFormError] = useState<string | null>(null);
 
@@ -11,29 +11,29 @@ const SmoothieForm = () => {
     e.preventDefault();
 
     if (!title || !method || !rating) {
-      setFormError("Please fill all the fields correctly");
+      setFormError('Please fill all the fields correctly');
       return;
     }
 
     if (rating > 5 || rating < 0) {
-      setFormError("Rating only can be between 0 to 5");
+      setFormError('Rating only can be between 0 to 5');
       return;
     }
 
     const { data, error } = await supabase
-      .from("Smoothies")
+      .from('Smoothies')
       .insert([{ title, method, rating }])
       .select();
 
     if (error) {
       console.log(error);
-      setFormError("Please fill all the fields correctly");
+      setFormError('Please fill all the fields correctly');
     }
 
     if (data) {
       console.log(data);
       setFormError(null);
-      window.location.href = "/";
+      window.location.href = '/';
     }
   };
 
@@ -54,9 +54,7 @@ const SmoothieForm = () => {
         id="title"
         placeholder="Milk Shake"
         value={title}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setTitle(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
         className="mb-4 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
 
@@ -70,9 +68,7 @@ const SmoothieForm = () => {
         id="method"
         placeholder="Blend the fruits with milk..."
         value={method}
-        onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-          setMethod(e.target.value)
-        }
+        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setMethod(e.target.value)}
         className="mb-4 resize-none rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 outline-none lg:text-base"
       />
 
@@ -91,9 +87,7 @@ const SmoothieForm = () => {
         id="rating"
         placeholder="5"
         value={rating}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setRating(Number(e.target.value))
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setRating(Number(e.target.value))}
         className="mb-4 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1.5 text-sm text-sky-900 lg:text-base"
       />
       <button
@@ -104,9 +98,7 @@ const SmoothieForm = () => {
       </button>
 
       {formError && (
-        <p className="mt-4 text-center text-sm text-rose-500 md:text-base">
-          {formError}
-        </p>
+        <p className="mt-4 text-center text-sm text-rose-500 md:text-base">{formError}</p>
       )}
     </form>
   );

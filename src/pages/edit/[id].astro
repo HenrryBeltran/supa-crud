@@ -1,8 +1,8 @@
 ---
-import EditSmoothieForm from "../../components/EditSmoothieForm";
-import Navbar from "../../components/Navbar";
-import MainLayout from "../../layouts/MainLayout.astro";
-import supabase from "../../supabase/client";
+import EditSmoothieForm from '../../components/EditSmoothieForm';
+import Navbar from '../../components/Navbar';
+import MainLayout from '../../layouts/MainLayout.astro';
+import supabase from '../../supabase/client';
 
 interface Smoothie {
   id: number;
@@ -15,13 +15,13 @@ interface Smoothie {
 const { id } = Astro.params;
 
 const { data, error } = await supabase
-  .from("Smoothies")
-  .select<"*", Smoothie>()
-  .eq("id", Number(id))
+  .from('Smoothies')
+  .select<'*', Smoothie>()
+  .eq('id', Number(id))
   .single();
 
 if (error) {
-  return Astro.redirect("/");
+  return Astro.redirect('/');
 }
 
 const smoothie: Smoothie = data;
